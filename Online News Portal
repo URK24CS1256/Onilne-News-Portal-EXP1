@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Chronicle - Online News Portal</title>
+    <!-- Internal CSS for styling background and text colors -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222222;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        header, section, footer {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a365d;
+        }
+        h2, h3 {
+            color: #2b6cb0;
+        }
+        a {
+            color: #3182ce;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #cbd5e0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section / Top Navigation -->
+    <div id="top">
+        <header>
+            <!-- Main Heading (h1) -->
+            <h1>The Daily Chronicle</h1>
+            <p><em>Your trusted source for global news, tech, and sports.</em></p>
+            
+            <!-- Quick Navigation Links (Internal Link & Bookmark Link) -->
+            <nav>
+                <p>
+                    <strong>Quick Jump:</strong> 
+                    <a href="#latest-news">Latest News</a> | 
+                    <a href="#market-trends">Market Trends</a> | 
+                    <a href="#categories">Categories</a> | 
+                    <a href="#contact">Contact Us</a>
+                </p>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Main Breaking News Section -->
+    <!-- Comment: Breaking News Module -->
+    <div id="latest-news">
+        <section>
+            <!-- Section Subheading (h2) -->
+            <h2>Breaking News: Global Tech Summit 2026</h2>
+            
+            <!-- Paragraphs (p) -->
+            <p>Tech leaders from around the globe gathered today to discuss the future of artificial intelligence, sustainable energy, and digital privacy. The summit highlights major developments expected to reshape technology over the next decade.</p>
+            
+            <p>Industry experts emphasized the need for transparent regulations and ethical AI development to protect consumers worldwide.</p>
+
+            <!-- Clickable Image Link & Descriptive Image with alt tag -->
+            <p><strong>Featured Article Cover (Click image to read full coverage on BBC):</strong></p>
+            <a href="https://www.bbc.com/news" target="_blank">
+                <img src="https://picsum.photos/600/300" alt="Global Tech Summit Conference Hall" width="100%" style="max-width:600px; height:auto; border-radius: 5px;">
+            </a>
+
+            <!-- External Link with target="_blank" -->
+            <p>Read more live coverage on <a href="https://www.bbc.com/news" target="_blank">BBC News Portal</a>.</p>
+        </section>
+    </div>
+
+    <!-- Data Table Section -->
+    <!-- Comment: Market & Weather Table Module -->
+    <div id="market-trends">
+        <section>
+            <h2>Daily Market & Weather Summary</h2>
+            <p>Here is today's overview of major financial indices and local weather updates:</p>
+            
+            <!-- Table with rows and columns -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Indicator / Region</th>
+                        <th>Status / Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Stock Market</td>
+                        <td>S&P 500</td>
+                        <td>+1.2% ↑</td>
+                    </tr>
+                    <tr>
+                        <td>Stock Market</td>
+                        <td>NASDAQ</td>
+                        <td>+0.8% ↑</td>
+                    </tr>
+                    <tr>
+                        <td>Weather Forecast</td>
+                        <td>New York</td>
+                        <td>22°C (Sunny)</td>
+                    </tr>
+                    <tr>
+                        <td>Weather Forecast</td>
+                        <td>London</td>
+                        <td>15°C (Rainy)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Lists Section -->
+    <!-- Comment: Categories and Top Stories Module -->
+    <div id="categories">
+        <section>
+            <h2>News Digest & Categories</h2>
+
+            <!-- Nested Ordered List (ol with li) -->
+            <h3>Top 3 Read Articles Today</h3>
+            <ol>
+                <li>
+                    Global Economic Outlook
+                    <ol type="a">
+                        <li>Inflation rates stabilizing in Q3</li>
+                        <li>Central banks adjust interest policies</li>
+                    </ol>
+                </li>
+                <li>Space Exploration Breakthrough</li>
+                <li>New Renewable Energy Reforms</li>
+            </ol>
+
+            <!-- Nested Unordered List (ul with li) -->
+            <h3>Portal Sections</h3>
+            <ul>
+                <li>
+                    World News
+                    <ul>
+                        <li>Europe</li>
+                        <li>Asia-Pacific</li>
+                        <li>Americas</li>
+                    </ul>
+                </li>
+                <li>Technology & Science</li>
+                <li>Sports & Entertainment</li>
+            </ul>
+
+            <!-- Description List (dl, dt, dd) -->
+            <h3>Journalism Glossary</h3>
+            <dl>
+                <dt><strong>Headline</strong></dt>
+                <dd>The title of a news article, designed to summarize the content and draw readers' attention.</dd>
+                
+                <dt><strong>Byline</strong></dt>
+                <dd>A line in a newspaper naming the writer of an article.</dd>
+                
+                <dt><strong>Editorial</strong></dt>
+                <dd>An article presenting the opinion of the newspaper or publisher.</dd>
+            </dl>
+        </section>
+    </div>
+
+    <!-- Footer & Contact Links Section -->
+    <!-- Comment: Footer Module -->
+    <div id="contact">
+        <footer>
+            <h2>Contact Editorial Team</h2>
+            <p>Have a news tip or feedback? Get in touch with our newsroom:</p>
+            
+            <!-- Email Link (mailto:) -->
+            <p>📧 Email Us: <a href="mailto:reachus@dailychronicle.com">reachus@dailychronicle.com</a></p>
+            
+            <!-- Phone Link (tel:) -->
+            <p>📞 Contact Us: <a href="tel:+918005550199">+91 8005550199</a></p>
+
+            <!-- Bookmark Link back to top -->
+            <p><a href="#top">⬆ Back to Top</a></p>
+            
+            <p>&copy; 2026 The Daily Chronicle. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
