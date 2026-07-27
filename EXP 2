@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Chronicle - Online News & Media Portal</title>
+    <!-- Internal CSS styling for professional news layout -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #222222;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        header, section, footer {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a365d;
+            margin-top: 0;
+        }
+        h2, h3 {
+            color: #2b6cb0;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .featured-img {
+            width: 100%;
+            max-width: 650px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #cbd5e0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e2e8f0;
+        }
+        fieldset {
+            border: 1px solid #cbd5e0;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+        }
+        legend {
+            font-weight: bold;
+            color: #1a365d;
+        }
+        label {
+            display: inline-block;
+            margin-top: 8px;
+        }
+        input, select, textarea {
+            margin-top: 4px;
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 98%;
+            max-width: 500px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+        }
+        input[type="submit"], input[type="reset"] {
+            width: auto;
+            background-color: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        input[type="reset"] {
+            background-color: #718096;
+        }
+        input[type="submit"]:hover {
+            background-color: #1a365d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>The Daily Chronicle</h1>
+        <p><em>Your Global Source for Real-Time News, Audio Podcasts, and Video Broadcasts.</em></p>
+        
+        <!-- Navigation Bar -->
+        <!-- HTML Comment: Navigation Module -->
+        <nav>
+            <p>
+                <strong>Quick Navigation:</strong> 
+                <a href="#breaking">Breaking News</a> | 
+                <a href="#multimedia">Multimedia Room</a> | 
+                <a href="#markets">Markets & Weather</a> | 
+                <a href="#subscribe">Newsletter & Feedback</a>
+            </p>
+        </nav>
+    </header>
+
+    <!-- Breaking News Article Section -->
+    <div id="breaking">
+        <section>
+            <h2>Breaking News: Global Tech & Economic Summit 2026</h2>
+            <p>Industry pioneers gathered today at the international media center to announce groundbreaking advances in artificial intelligence, renewable energy grids, and global supply chain integration.</p>
+            
+            <!-- Professional High-Quality Featured News Image -->
+            <a href="https://www.bbc.com/news" target="_blank">
+                <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1000&q=80" alt="Journalist Broadcasting Live at Global Press Conference" class="featured-img">
+            </a>
+            <p><em>Click the image above to read full live coverage on BBC News.</em></p>
+        </section>
+    </div>
+
+    <!-- HTML5 Media Elements Section -->
+    <!-- HTML Comment: Audio, Video, Embed, and iFrame Section -->
+    <div id="multimedia">
+        <section>
+            <h2>Chronicle Multimedia Hub</h2>
+
+            <!-- 1. Audio Element -->
+            <h3>1. Morning News Audio Podcast</h3>
+            <p>Listen to today's 3-minute news podcast briefing:</p>
+            <audio controls>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <!-- 2. Video Element (Working HTTPS Video Sources) -->
+            <h3>2. Live Press Conference Broadcast</h3>
+            <p>Watch full HD video coverage directly from the newsroom:</p>
+            <video controls width="100%" style="max-width:600px; border-radius:6px; background-color:#000;" poster="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- 3. Embed Element -->
+            <h3>3. Audio Plug-in Stream</h3>
+            <embed src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" width="300" height="45">
+
+            <!-- 4. iFrame Element -->
+            <h3>4. Integrated External Journalism Portal</h3>
+            <iframe src="https://en.wikipedia.org/wiki/Journalism" width="100%" height="250" style="border:1px solid #cbd5e0; border-radius:5px;"></iframe>
+        </section>
+    </div>
+
+    <!-- Data Table Section -->
+    <div id="markets">
+        <section>
+            <h2>Market & Regional Weather Overview</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Index / Region</th>
+                        <th>Status / Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Financial Index</td>
+                        <td>S&P 500</td>
+                        <td>+1.4% ↑</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Index</td>
+                        <td>NASDAQ</td>
+                        <td>+0.9% ↑</td>
+                    </tr>
+                    <tr>
+                        <td>Weather Report</td>
+                        <td>New York</td>
+                        <td>24°C (Sunny)</td>
+                    </tr>
+                    <tr>
+                        <td>Weather Report</td>
+                        <td>London</td>
+                        <td>16°C (Rainy)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- HTML5 Form Section -->
+    <!-- HTML Comment: Form and Fieldset Module -->
+    <div id="subscribe">
+        <section>
+            <h2>Subscribe to Newsletter & Letter to the Editor</h2>
+            
+            <!-- Progress Indicator -->
+            <p>Subscription Form Completion Progress: 
+                <progress value="60" max="100"></progress>
+            </p>
+
+            <form action="#" method="get">
+                
+                <!-- Fieldset 1: Subscriber Details -->
+                <fieldset>
+                    <legend>Subscriber Details</legend>
+
+                    <label for="username">Full Name:</label><br>
+                    <input type="text" id="username" name="username" placeholder="John Doe" required><br>
+
+                    <label for="useremail">Email Address:</label><br>
+                    <input type="email" id="useremail" name="useremail" placeholder="john@example.com" required><br>
+
+                    <label for="usertel">Phone Number:</label><br>
+                    <input type="tel" id="usertel" name="usertel" placeholder="+1-123-456-7890"><br>
+
+                    <label for="subdate">Subscription Start Date:</label><br>
+                    <input type="date" id="subdate" name="subdate"><br>
+                </fieldset>
+
+                <!-- Fieldset 2: Preferences & Feedback -->
+                <fieldset>
+                    <legend>News Preferences & Feedback</legend>
+
+                    <label>Edition Preference:</label><br>
+                    <input type="radio" id="digital" name="edition" value="digital" checked>
+                    <label for="digital">Digital Daily Edition</label>
+                    <input type="radio" id="weekly" name="edition" value="weekly">
+                    <label for="weekly">Weekly Print Digest</label><br><br>
+
+                    <label for="category">Primary Topic Interest:</label><br>
+                    <select id="category" name="category">
+                        <option value="world">World News</option>
+                        <option value="tech">Technology & Science</option>
+                        <option value="finance">Business & Markets</option>
+                        <option value="sports">Sports</option>
+                    </select><br><br>
+
+                    <label for="feedback">Letter to the Editor / Comments:</label><br>
+                    <textarea id="feedback" name="feedback" rows="4" placeholder="Write your letter or commentary here..."></textarea><br>
+
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to receive daily editorial newsletters.</label><br>
+                </fieldset>
+
+                <!-- Form Action Buttons -->
+                <input type="submit" value="Subscribe Now">
+                <input type="reset" value="Clear Form">
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 The Daily Chronicle. All rights reserved. Built using HTML5 Form & Media Elements.</p>
+    </footer>
+
+</body>
+</html>
