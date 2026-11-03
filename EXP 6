@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online News Portal - Sharvesh (URK24CS1256)</title>
+
+    <style>
+        /* General Page Styling */
+        * {
+            box-sizing: border-box;
+            font-family: Georgia, Garamond, 'Times New Roman', serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #222222;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(135deg, #1c334d, #2b6cb0);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 6px 0 0;
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        /* Container Sections */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #1c334d;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 18px;
+            font-size: 15px;
+            font-weight: bold;
+            background: #e50914;
+            color: white;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            background: #b80710;
+        }
+
+        /* Digital Clock Styling */
+        #newsClock {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1c334d;
+            background: #edf2f7;
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        /* Dynamic Background Container */
+        #bgContainer {
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #ffffff;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Article Reader Text Zoom */
+        #para1 {
+            font-size: 16px;
+            cursor: pointer;
+            transition: font-size 0.3s ease;
+            color: #2d3748;
+            line-height: 1.6;
+            padding: 12px;
+            background: #edf2f7;
+            border-left: 5px solid #2b6cb0;
+            border-radius: 4px;
+        }
+
+        /* Animated News Ticker Banner */
+        #tickerContainer {
+            width: 100%;
+            height: 40px;
+            background: #1c334d;
+            overflow: hidden;
+            position: relative;
+            border-radius: 6px;
+        }
+
+        #newsTicker {
+            position: absolute;
+            left: 0px;
+            top: 8px;
+            white-space: nowrap;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Journalist Staff Directory Styling */
+        .journalist-item {
+            padding: 10px;
+            margin: 6px 0;
+            border-radius: 6px;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .before-2000 {
+            color: #c53030;
+            font-weight: bold;
+        }
+
+        .after-2000 {
+            color: #276749;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 15px;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>The Daily Chronicle</h1>
+        <p>Online News Portal — Editorial Hub of Sharvesh S (URK24CS1256)</p>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. Live Newsroom Digital Clock -->
+        <div class="card">
+            <h2>1. Live Newsroom Clock</h2>
+            <p>Real-time newsroom timestamp powered by JavaScript <code>setInterval()</code> and <code>Date</code> object:</p>
+            <div id="newsClock">00:00:00</div>
+        </div>
+
+        <!-- 2. Dynamic Panel Background Color Changer -->
+        <div class="card">
+            <h2>2. Dynamic Breaking News Panel (30-Sec Auto Cycle)</h2>
+            <div id="bgContainer">
+                <p>This news flash bulletin background automatically shifts colors every 30 seconds using randomized RGB values.</p>
+            </div>
+        </div>
+
+        <!-- 3. Reader Accessibility Text Zoom -->
+        <div class="card">
+            <h2>3. Reader Accessibility Mode</h2>
+            <p>Hover your mouse cursor over the news paragraph below to zoom in for clearer reading:</p>
+            <p id="para1" onmouseover="incSize()" onmouseout="decSize()">
+                BREAKING NEWS: Lead Editor Sharvesh S reports live from the international media conference on major updates in artificial intelligence integration, cloud software security, and regional tech innovation for 2026.
+            </p>
+        </div>
+
+        <!-- 4. Moving News Ticker Animation -->
+        <div class="card">
+            <h2>4. Animated Breaking News Ticker</h2>
+            <div id="tickerContainer">
+                <span id="newsTicker">🚨 BREAKING: Sharvesh S (URK24CS1256) Publishing Live Coverage on Global Tech Summit...</span>
+            </div>
+            <br>
+            <button onclick="startTicker()">Start Ticker</button>
+            <button onclick="stopTicker()">Stop Ticker</button>
+        </div>
+
+        <!-- 5. Journalist Directory -->
+        <div class="card">
+            <h2>5. Newsroom Staff Directory (DOB Categorization)</h2>
+            <p>Iterating through an array of journalist objects to categorize editorial staff born before vs after year 2000:</p>
+            <div id="journalistList"></div>
+        </div>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>The Daily Chronicle — Online News Portal</p>
+        <p>Copyright 2026-2027 | Sharvesh S | URK24CS1256 | Web Technology Lab</p>
+    </footer>
+
+    <!-- JavaScript Execution Logic -->
+    <script>
+        // =========================================================
+        // 1. Digital Clock (setInterval & Date Object)
+        // =========================================================
+        function displayClock() {
+            var d = new Date();
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            document.getElementById("newsClock").innerHTML = hours + ":" + minutes + ":" + seconds;
+        }
+        displayClock();
+        setInterval(displayClock, 1000);
+
+        // =========================================================
+        // 2. Dynamic Background Color Changer (Every 30 Seconds)
+        // =========================================================
+        function setBackgroundColor() {
+            var red = Math.floor(Math.random() * 256);
+            var green = Math.floor(Math.random() * 256);
+            var blue = Math.floor(Math.random() * 256);
+
+            var color = "rgb(" + red + "," + green + "," + blue + ")";
+            document.getElementById("bgContainer").style.backgroundColor = color;
+        }
+        setBackgroundColor();
+        setInterval(setBackgroundColor, 30000); // 30,000 ms = 30 seconds
+
+        // =========================================================
+        // 3. Reader Accessibility Text Zoom (onmouseover / onmouseout)
+        // =========================================================
+        function incSize() {
+            document.getElementById("para1").style.fontSize = "24px";
+        }
+
+        function decSize() {
+            document.getElementById("para1").style.fontSize = "16px";
+        }
+
+        // =========================================================
+        // 4. Scrolling News Ticker Banner (setTimeout Animation)
+        // =========================================================
+        var tickerObj = document.getElementById("newsTicker");
+        var animate = null;
+
+        function moveRight() {
+            var currentPos = parseInt(tickerObj.style.left || 0);
+            // Reset position when ticker scrolls past 600px
+            tickerObj.style.left = (currentPos > 600 ? -450 : currentPos + 2) + "px";
+            animate = setTimeout(moveRight, 15);
+        }
+
+        function startTicker() {
+            stopTicker();
+            moveRight();
+        }
+
+        function stopTicker() {
+            clearTimeout(animate);
+        }
+
+        // Auto-start ticker on page load
+        startTicker();
+
+        // =========================================================
+        // 5. Array of Objects & DOB Categorization (< 2000 vs >= 2000)
+        // =========================================================
+        var journalists = [
+            { name: 'John Mark', r_num: 'UR13CS129', yob: 1995 },
+            { name: 'Joseph Roy', r_num: 'UR18CS456', yob: 1998 },
+            { name: 'Anita Kumar', r_num: 'UR21CS789', yob: 2001 },
+            { name: 'Sharvesh S', r_num: 'URK24CS1256', yob: 2004 }
+        ];
+
+        var outputHtml = "";
+        for (var i = 0; i < journalists.length; i++) {
+            outputHtml += "<div class='journalist-item'>" +
+                "<strong>" + journalists[i].name + "'s</strong> Press Badge ID is " + journalists[i].r_num + ". ";
+
+            if (journalists[i].yob < 2000) {
+                outputHtml += "<span class='before-2000'>Senior Staff (Born before 2000 - " + journalists[i].yob + ")</span>";
+            } else {
+                outputHtml += "<span class='after-2000'>Junior Associate (Born in/after 2000 - " + journalists[i].yob + ")</span>";
+            }
+            outputHtml += "</div>";
+        }
+
+        document.getElementById("journalistList").innerHTML = outputHtml;
+    </script>
+</body>
+</html>
