@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Chronicle - News Reader Customizer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Georgia, Garamond, serif; }
+        body { background: #f4f3ef; color: #222; }
+        header { background: #111; color: white; padding: 22px 8%; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 30px; }
+        header span, .intro span { color: #d9a441; }
+        header p { color: #ccc; }
+        .main { max-width: 1100px; width: 90%; margin: 45px auto; }
+        .intro { margin-bottom: 30px; }
+        .tag { color: #b4862d; font-size: 12px; letter-spacing: 3px; margin-bottom: 12px; font-weight: bold; }
+        .intro h2 { font-size: 38px; margin-bottom: 12px; }
+        .intro > p:last-child { color: #777; line-height: 1.6; }
+        .customizer { display: flex; gap: 25px; align-items: stretch; }
+        .preview, .controls { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 8px 25px #ddd; }
+        .preview { flex: 1.5; min-width: 0; }
+        .controls { flex: 1; }
+        .preview h3, .controls h3 { margin-bottom: 25px; font-size: 22px; color: #111; }
+        .news-scene { background: #ffffff; height: 250px; position: relative; overflow: hidden; border-radius: 12px; border: 2px solid #ddd; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+        .news-header { background: #111; color: white; padding: 12px; border-radius: 6px; text-align: center; font-size: 20px; margin-bottom: 15px; }
+        .news-body { font-size: 18px; line-height: 1.5; color: #222; text-align: justify; }
+        #message { margin-top: 20px; color: #9b7425; font-weight: bold; }
+        .controls label { display: block; margin: 20px 0 10px; font-weight: bold; }
+        .controls input, .controls select { width: 100%; cursor: pointer; }
+        .controls input[type="color"] { height: 45px; border: none; background: white; }
+        .controls select { padding: 12px; border: 1px solid #ddd; border-radius: 6px; }
+        .controls input[type="range"] { accent-color: #d9a441; }
+        .controls p { margin-top: 10px; color: #777; }
+        button { width: 100%; margin-top: 18px; padding: 13px; border: none; border-radius: 7px; background: #171717; color: white; cursor: pointer; font-weight: bold; font-size: 15px; }
+        button:hover { background: #d9a441; color: #111; }
+        footer { background: #111; color: white; text-align: center; padding: 30px; margin-top: 50px; }
+        footer h2 { color: #d9a441; margin-bottom: 10px; }
+        footer p { color: #bbb; margin: 7px; }
+        @media (max-width: 700px) {
+            header { flex-direction: column; gap: 10px; }
+            .intro h2 { font-size: 30px; }
+            .customizer { flex-direction: column; }
+            .preview, .controls { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Daily <span>Chronicle</span></h1>
+        <p>Sharvesh S | URK24CS1256 | Web Technology Lab</p>
+    </header>
+
+    <section class="main">
+        <div class="intro">
+            <p class="tag">PERSONALISE YOUR NEWSFEED</p>
+            <h2>Build Your <span>Custom Portal</span></h2>
+            <p>Customize banner colors, reader text tint, and headline typography size using jQuery.</p>
+        </div>
+
+        <div class="customizer">
+            <div class="preview">
+                <h3>Live Article Preview</h3>
+                <div class="news-scene">
+                    <div class="news-header">The Daily Chronicle</div>
+                    <div class="news-body">BREAKING: Lead Editor Sharvesh S reports on the Global Economic Summit 2026, highlighting advancements in digital infrastructure and sustainable energy solutions.</div>
+                </div>
+                <p id="message">Your news portal is ready to customize!</p>
+            </div>
+
+            <div class="controls">
+                <h3>Customize Interface</h3>
+                <label for="colour">Header Banner Color</label>
+                <input type="color" id="colour" value="#111111">
+
+                <label for="tint">News Text Tint</label>
+                <select id="tint">
+                    <option value="#222222">Classic Dark Text</option>
+                    <option value="#1c334d">Navy Blue Tint</option>
+                    <option value="#2e7d32">Forest Green Tint</option>
+                </select>
+
+                <label for="fontRange">Article Font Size</label>
+                <input type="range" id="fontRange" min="14" max="26" value="18">
+                <p>Size: <span id="size">18</span> px</p>
+
+                <button id="apply">Apply Changes</button>
+                <button id="reset">Reset Portal</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2>The Daily Chronicle</h2>
+        <p>Verified Global News & Editorial Reporting.</p>
+        <p>© 2026-2027 | Sharvesh S | URK24CS1256 | Web Technology Lab</p>
+    </footer>
+
+    <script>
+        $(document).ready(function() {$("#apply").click(function() {
+                $(".news-header").css("background-color", $("#colour").val());
+                $(".news-body").css("color", $("#tint").val());
+                let fontSize = $("#fontRange").val();
+                $(".news-body").css("font-size", fontSize + "px");
+                $("#size").text(fontSize);
+                $("#message").text("Your news portal settings have been updated!");
+            });
+
+            $("#fontRange").on("input", function() {
+                $("#size").text($(this).val());
+            });
+
+            $("#reset").click(function() {
+                $("#colour").val("#111111");
+                $("#tint").val("#222222");
+                $("#fontRange").val(18);
+                $(".news-header").css("background-color", "#111111");
+                $(".news-body").css("color", "#222222").css("font-size", "18px");
+                $("#size").text("18");
+                $("#message").text("Your news portal settings have been reset.");
+            });
+        });
+    </script>
+</body>
+</html>
