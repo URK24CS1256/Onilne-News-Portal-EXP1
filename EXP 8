@@ -1,0 +1,340 @@
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+const styles = `
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f3ef;
+  color: #222;
+}
+
+header {
+  color: white;
+  background: #111;
+  padding: 22px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+header span {
+  color: #d9a441;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #d9a441;
+}
+
+main {
+  min-height: 70vh;
+  padding: 35px 16px;
+}
+
+.home {
+  max-width: 850px;
+  margin: 70px auto;
+  padding: 65px 25px;
+  text-align: center;
+  background: #171717;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px #ccc;
+}
+
+.home h2 {
+  font-size: 42px;
+  margin: 15px 0;
+}
+
+.home h2 span {
+  color: #d9a441;
+}
+
+.home p {
+  color: #ccc;
+  line-height: 1.7;
+}
+
+.tag {
+  color: #d9a441 !important;
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 13px 25px;
+  background: #d9a441;
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.button:hover {
+  background: white;
+}
+
+.card {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 22px #ddd;
+}
+
+.card h2 {
+  text-align: center;
+  color: #b4862d;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin: 15px 0 7px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #d9a441;
+}
+
+small {
+  display: block;
+  color: red;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 6px;
+  background: #111;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d9a441;
+  color: #111;
+}
+
+button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.success {
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+footer h2 {
+  color: #d9a441;
+  margin-bottom: 6px;
+}
+
+footer p {
+  color: #bbb;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .home h2 {
+    font-size: 30px;
+  }
+  .card {
+    padding: 20px;
+  }
+}
+`;
+
+function Home() {
+  return (
+    <div className="home">
+      <p className="tag">VERIFIED NEWS MEDIA NETWORK</p>
+      <h2>Read <span>The Daily Chronicle</span></h2>
+      <p>
+        Delivering accurate breaking news, digital press releases, 
+        and editorial opinions worldwide.
+      </p>
+      <Link className="button" to="/register">
+        Register Press Pass
+      </Link>
+    </div>
+  );
+}
+
+function Register() {
+  const [form, setForm] = useState({
+    name: "", email: "", password: "", age: "", mobile: "", gender: "", state: ""
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const updateField = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setSubmitted(false);
+  };
+
+  const errors = {
+    name: !/^[A-Za-z\s]+$/.test(form.name.trim()),
+    email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email),
+    password: !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(form.password),
+    age: !/^\d+$/.test(form.age) || Number(form.age) < 18 || Number(form.age) > 30,
+    mobile: !/^\d{10}$/.test(form.mobile)
+  };
+
+  const valid =
+    form.name.trim() !== "" && !errors.name &&
+    form.email !== "" && !errors.email &&
+    form.password !== "" && !errors.password &&
+    form.age !== "" && !errors.age &&
+    form.mobile !== "" && !errors.mobile &&
+    form.gender !== "" && form.state !== "";
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (valid) setSubmitted(true);
+  };
+
+  return (
+    <div className="card">
+      <h2>Press Credential Registration</h2>
+      <p className="subtitle">Join Sharvesh S at The Daily Chronicle Network</p>
+      <form onSubmit={handleSubmit} noValidate>
+        <label>Full Name</label>
+        <input name="name" value={form.name} onChange={updateField} placeholder="Enter full name" />
+        {form.name && errors.name && <small>Enter letters and spaces only.</small>}
+
+        <label>Email Address</label>
+        <input name="email" type="email" value={form.email} onChange={updateField} placeholder="Enter press email" />
+        {form.email && errors.email && <small>Enter a valid email address.</small>}
+
+        <label>Password</label>
+        <input name="password" type="password" value={form.password} onChange={updateField} placeholder="Minimum 8 characters" />
+        {form.password && errors.password && <small>Use uppercase, lowercase and a number.</small>}
+
+        <label>Age</label>
+        <input name="age" type="number" value={form.age} onChange={updateField} placeholder="Age 18-30" />
+        {form.age && errors.age && <small>Age must be between 18 and 30.</small>}
+
+        <label>Mobile Number</label>
+        <input name="mobile" type="tel" value={form.mobile} onChange={updateField} placeholder="10-digit mobile number" />
+        {form.mobile && errors.mobile && <small>Enter exactly 10 digits.</small>}
+
+        <label>Gender</label>
+        <select name="gender" value={form.gender} onChange={updateField}>
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+
+        <label>State</label>
+        <select name="state" value={form.state} onChange={updateField}>
+          <option value="">Select State</option>
+          <option>Tamil Nadu</option>
+          <option>Kerala</option>
+          <option>Karnataka</option>
+          <option>Andhra Pradesh</option>
+        </select>
+
+        <button type="submit" disabled={!valid}>
+          Submit Registration
+        </button>
+        {submitted && (
+          <p className="success">Press pass registration completed successfully!</p>
+        )}
+      </form>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <style>{styles}</style>
+      <header>
+        <h1>The Daily <span>Chronicle</span></h1>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/register">Registration</Link>
+        </nav>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </main>
+      <footer>
+        <h2>The Daily Chronicle</h2>
+        <p>© 2026-2027 | Sharvesh S | URK24CS1256 | Web Technology Lab</p>
+      </footer>
+    </BrowserRouter>
+  );
+}
+
+// Mount directly to root
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
