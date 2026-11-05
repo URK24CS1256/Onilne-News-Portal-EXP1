@@ -1,0 +1,76 @@
+import http from "http";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const PORT = 5000;
+
+// Resolve directory path in ES Module scope
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DATA_FILE = path.join(__dirname, "..", "newsdata.json");
+
+const sendJSON = (res, statusCode, data) => {
+  res.writeHead(statusCode, {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
+  });
+  res.end(JSON.stringify(data));
+};
+
+const server = http.createServer((req, res) => {
+  const reqUrl = new URL(req.url, `http://${req.headers.host}`);
+  const method = req.method;
+
+  if (method === "OPTIONS") {
+    res.writeHead(204, {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type"
+    });
+    return res.end();
+  }
+
+  if ((reqUrl.pathname === "/" || reqUrl.pathname === "/home") && method === "GET") {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>The Daily Chronicle | Server</title>
+        <style>
+          body { font-family: Arial, sans-serif; background: #f4f3ef; color: #222; text-align: center; padding: 50px; }
+          .card { background: #111; color: white; padding: 40px; border-radius: 12px; max-width: 600px; margin: auto; }
+          h1 span { color: #d9a441; }
+          a { color: #d9a441; text-decoration: none; font-weight: bold; }
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <h1>The Daily <span>Chronicle</span></h1>
+          <p>Node.js Server-Side Application Engine Active</p>
+          <p>Sharvesh S | URK24CS1256 | Web Technology Lab</p>
+          <hr />
+          <p>View Live News API: <a href="/api/news">/api/news</a></p>
+        </div>
+      </body>
+      </html>
+    `);
+  } else if (reqUrl.pathname === "/api/news" && method === "GET") {
+    fs.readFile(DATA_FILE, "utf8", (err, data) => {
+      if (err) {
+        sendJSON(res, 500, { error: "Failed to read server data" });
+      } else {
+        sendJSON(res, 200, JSON.parse(data));
+      }
+    });
+  } else {
+    sendJSON(res, 404, { error: "Requested endpoint not found" });
+  }
+});
+
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}/`);
+  console.log(`Node.js Engine actively handling request queue...`);
+});
